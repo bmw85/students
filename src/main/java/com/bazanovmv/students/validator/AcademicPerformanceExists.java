@@ -1,3 +1,4 @@
+/*
 package com.bazanovmv.students.validator;
 
 import javax.validation.Constraint;
@@ -22,6 +23,7 @@ public @interface AcademicPerformanceExists {
 
 }
 
+*/
 
 
 /*

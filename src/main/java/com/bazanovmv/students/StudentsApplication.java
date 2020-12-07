@@ -1,14 +1,17 @@
 package com.bazanovmv.students;
 
 import com.bazanovmv.students.model.AcademicPerformance;
+import com.bazanovmv.students.model.Student;
 import com.bazanovmv.students.repository.AcademicPerformanceRepository;
-import com.bazanovmv.students.validator.AcademicPerformanceValidator2;
+import com.bazanovmv.students.repository.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.sql.Date;
 
 @SpringBootApplication
 public class StudentsApplication {
@@ -19,7 +22,7 @@ public class StudentsApplication {
 	}
 
 	@Bean
-	public CommandLineRunner AcademicPerformanceRepositoryInit(AcademicPerformanceRepository academicPerformanceRepository) {
+	public CommandLineRunner AcademicPerformanceRepositoryInit(AcademicPerformanceRepository academicPerformanceRepository, StudentRepository studentRepository) {
 		return (args) -> {
 
 			academicPerformanceRepository.save(new AcademicPerformance(2L, "неуд"));
@@ -27,8 +30,8 @@ public class StudentsApplication {
 			academicPerformanceRepository.save(new AcademicPerformance(4L, "хор"));
 			academicPerformanceRepository.save(new AcademicPerformance(5L, "отл"));
 
+			studentRepository.save(new Student("Ivan Petrov", new Date(1286668800000L), academicPerformanceRepository.findById(4L)));
 
-			// fetch all customers
 			log.info("AcademicPerformances found with findAll():");
 			log.info("-------------------------------");
 			for (AcademicPerformance academicPerformance : academicPerformanceRepository.findAll()) {
@@ -36,14 +39,12 @@ public class StudentsApplication {
 			}
 			log.info("");
 
-			// fetch an individual academicPerformance by ID
 			AcademicPerformance academicPerformance = academicPerformanceRepository.findById(3L);
 			log.info("AcademicPerformance found with findById(1L):");
 			log.info("--------------------------------");
 			log.info(academicPerformance.toString());
 			log.info("");
 
-			// fetch customers by last name
 			log.info("AcademicPerformance found with findByText('хор'):");
 			log.info("--------------------------------------------");
 			academicPerformanceRepository.findByText("хор").forEach(bauer -> {
@@ -56,6 +57,5 @@ public class StudentsApplication {
 
 		};
 	}
-
 
 }

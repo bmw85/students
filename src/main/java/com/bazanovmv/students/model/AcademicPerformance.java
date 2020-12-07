@@ -1,5 +1,8 @@
 package com.bazanovmv.students.model;
 
+
+import org.springframework.data.rest.core.config.Projection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +11,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /** Успеваемость */
+
 @Entity
 public class AcademicPerformance {
 
@@ -31,14 +35,6 @@ public class AcademicPerformance {
         return String.format(
                 "AcademicPerformance[id=%d, text='%s']",
                 id, text);
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getText() {

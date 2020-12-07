@@ -1,3 +1,4 @@
+/*
 package com.bazanovmv.students.validator;
 
 import com.bazanovmv.students.model.AcademicPerformance;
@@ -31,3 +32,4 @@ public class AcademicPerformanceValidator2 implements Validator {
         }
     }
 }
+*/

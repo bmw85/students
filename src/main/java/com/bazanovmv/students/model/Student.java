@@ -1,9 +1,8 @@
 package com.bazanovmv.students.model;
 
-import com.bazanovmv.students.validator.AcademicPerformanceExists;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -26,14 +25,13 @@ public class Student {
     /** Дата рождения*/
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @NotNull
-    //@JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
 
     /** Успеваемость */
     @ManyToOne
-//    @Nullable
-//    @AcademicPerformanceExists
-    //@AcademicPerformanceValidator2
+    @JoinColumn(name = "performance_id")
+    //@AcademicPerformanceExistsValidator3
     private AcademicPerformance performance;
 
     protected Student() {}
@@ -54,14 +52,6 @@ public class Student {
         return String.format(
                 "Student[id=%d, name='%s', birthDate ='%tF', performance='%s']",
                 id, name, birthDate, performance.toString());
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
