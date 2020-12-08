@@ -2,21 +2,35 @@ package com.bazanovmv.students.validator;
 
 import com.bazanovmv.students.model.AcademicPerformance;
 import com.bazanovmv.students.repository.AcademicPerformanceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+@Service
+@Component
 public class AcademicPerformanceValidator implements ConstraintValidator<AcademicPerformanceExistsValidator, AcademicPerformance> {
-
+    @Autowired
     private AcademicPerformanceRepository academicPerformanceRepository;
 
+//    public AcademicPerformanceValidator() {
+//        int kek = 1;
+//        kek = 4;
+//        System.out.println(kek);
+//    }
+//
+//
+    @Autowired
     public AcademicPerformanceValidator(AcademicPerformanceRepository academicPerformanceRepositoryRepository) {
         this.academicPerformanceRepository = academicPerformanceRepositoryRepository;
     }
 
+
+
     @Override
     public void initialize(AcademicPerformanceExistsValidator constraintAnnotation) {
-
     }
 
     @Override
@@ -25,7 +39,7 @@ public class AcademicPerformanceValidator implements ConstraintValidator<Academi
         return academicPerformanceRepository
                 .findById(value.getId())
                 .map((ap) -> ap.equals(value))
-                .orElseGet(() -> false) ;
+                .orElseGet(() -> false);
     }
 
 }
