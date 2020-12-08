@@ -1,6 +1,7 @@
 package com.bazanovmv.students.model;
 
 
+import com.bazanovmv.students.validator.AcademicPerformanceExistsValidator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -31,7 +32,7 @@ public class Student {
     /** Успеваемость */
     @ManyToOne
     @JoinColumn(name = "performance_id")
-    //@AcademicPerformanceExistsValidator3
+    @AcademicPerformanceExistsValidator
     private AcademicPerformance performance;
 
     protected Student() {}

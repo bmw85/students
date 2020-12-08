@@ -6,6 +6,7 @@ import com.bazanovmv.students.repository.AcademicPerformanceRepository;
 import com.bazanovmv.students.repository.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,6 +21,12 @@ public class StudentsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(StudentsApplication.class, args);
 	}
+
+//	@Autowired
+//	AcademicPerformanceRepository academicPerformanceRepository;
+//
+//	@Autowired
+//	StudentRepository studentRepository;
 
 	@Bean
 	public CommandLineRunner AcademicPerformanceRepositoryInit(AcademicPerformanceRepository academicPerformanceRepository, StudentRepository studentRepository) {
