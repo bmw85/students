@@ -30,8 +30,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@Component
-@Service
 @Repository
 @RepositoryRestResource(collectionResourceRel = "performance", path = "performances", excerptProjection = CustomAcademicPerformance.class)
 public interface AcademicPerformanceRepository extends CrudRepository<AcademicPerformance, Long> {

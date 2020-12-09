@@ -1,7 +1,6 @@
 package com.bazanovmv.students;
 
 import com.bazanovmv.students.model.AcademicPerformance;
-import com.bazanovmv.students.model.Student;
 import com.bazanovmv.students.repository.AcademicPerformanceRepository;
 import com.bazanovmv.students.repository.StudentRepository;
 import org.slf4j.Logger;
@@ -10,9 +9,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
-import java.sql.Date;
-
+@ComponentScan
 @SpringBootApplication
 public class StudentsApplication {
 	private static final Logger log = LoggerFactory.getLogger(StudentsApplication.class);
@@ -21,12 +20,13 @@ public class StudentsApplication {
 		SpringApplication.run(StudentsApplication.class, args);
 	}
 
+
+
 //	@Autowired
 //	AcademicPerformanceRepository academicPerformanceRepository;
 //
 //	@Autowired
 //	StudentRepository studentRepository;
-
 	@Bean
 	public CommandLineRunner AcademicPerformanceRepositoryInit(AcademicPerformanceRepository academicPerformanceRepository, StudentRepository studentRepository) {
 		return (args) -> {
@@ -36,7 +36,7 @@ public class StudentsApplication {
 			academicPerformanceRepository.save(new AcademicPerformance(4L, "хор"));
 			academicPerformanceRepository.save(new AcademicPerformance(5L, "отл"));
 
-			studentRepository.save(new Student("Ivan Petrov", new Date(1286668800000L), academicPerformanceRepository.findById(4L)));
+//			studentRepository.save(new Student("Ivan Petrov", new Date(1286668800000L), academicPerformanceRepository.findById(4L)));
 
 			log.info("AcademicPerformances found with findAll():");
 			log.info("-------------------------------");

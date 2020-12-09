@@ -22,7 +22,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
-@Service
 @Repository
 @RepositoryRestResource(collectionResourceRel = "students", path = "students")
 public interface StudentRepository extends CrudRepository<Student, Long> {

@@ -5,29 +5,16 @@ import com.bazanovmv.students.repository.AcademicPerformanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-@Service
-@Component
+//@Service
+//@Component
 public class AcademicPerformanceValidator implements ConstraintValidator<AcademicPerformanceExistsValidator, AcademicPerformance> {
     @Autowired
     private AcademicPerformanceRepository academicPerformanceRepository;
-
-//    public AcademicPerformanceValidator() {
-//        int kek = 1;
-//        kek = 4;
-//        System.out.println(kek);
-//    }
-//
-//
-    @Autowired
-    public AcademicPerformanceValidator(AcademicPerformanceRepository academicPerformanceRepositoryRepository) {
-        this.academicPerformanceRepository = academicPerformanceRepositoryRepository;
-    }
-
-
 
     @Override
     public void initialize(AcademicPerformanceExistsValidator constraintAnnotation) {
